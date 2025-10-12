@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import OverlayMenu from './OverlayMenu'
-import Logo from '../assets/logo.png'
+import Logo from '../assets/Logo.png'
 import { FiMenu } from 'react-icons/fi';
 const Navbar = () => {
 
