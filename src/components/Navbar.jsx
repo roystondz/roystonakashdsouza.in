@@ -61,7 +61,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 flex w-full px-6 py-4 items-center z-50 transition-transform duration-200 ${visible?"translate-y-0":"-translate-y-full"} justify-between`}>
 <div className='flex items-center space-x-2'>
     <img src={Logo} className="w-8 h-8 "/>
-    <div className='text-2xl font-bold text-white hidden sm:block hover:text-pink-500 transition-colors duration-300'>Royston Akash Dsouza</div>
+    <div className='text-2xl font-bold text-white hidden sm:block hover:text-pink-500 transition-colors duration-300'><a href='#'>Royston Akash Dsouza</a></div>
 </div>
 <div className='block lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2'>
 <button className='text-white text-3xl focus:outline-none' aria-label="openmenu" onClick={()=>setMenuOpen(true)} >
