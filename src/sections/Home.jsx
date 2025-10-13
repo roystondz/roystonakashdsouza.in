@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ParticlesBackground from '../components/ParticlesBackground'
 import { motion } from 'framer-motion'
-import { del } from 'framer-motion/client'
+import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
+
 
 const Home = () => {
 
@@ -9,7 +10,11 @@ const Home = () => {
   const [index,setIndex]=useState(0);
   const [subIndex,setSubindex]=useState(0);
   const [deleting,setDeleting]=useState(false);
-
+  const socials=[
+    {Icon:FaXTwitter,label:'X',link:'https://x.com/royston_akash'},
+    {Icon:FaLinkedinIn,label:'LinkedIn',link:'https://www.linkedin.com/in/royston-akash-dsouza-8b4b621b3/'},
+    {Icon:FaGithub,label:'GitHub',link:''}
+  ]
 
   useEffect(()=>{
     const current = roles[index];
@@ -58,6 +63,37 @@ const Home = () => {
             >
               <span>{roles[index].substring(0,subIndex)}</span>
               <span className='inline-block w-[2px] ml-1 bg-white animate-pulse align-middle' style={{height:'1em'}}></span>
+            </motion.div>
+            <motion.h1
+            className='text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text leading-tight bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63]'
+            initial={{opacity:0,y:50}}
+            animate={{opacity:1,y:0}}
+            transition={{duration:1,delay:0.4}}
+            >Hello, I'm<br/><span className='text-white font-bold text-5xl sm:text-6xl md:text-7xl '>Royston Akash Dsouza</span></motion.h1>
+            <motion.p className='mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0'
+            initial={{opacity:0,y:50}}
+            animate={{opacity:1,y:0}}
+            transition={{duration:1,delay:0.8}}
+            >I’m a Software Developer crafting scalable, human-centered solutions.
+            Clean design. Solid code. Real impact.</motion.p>
+            <motion.div className='mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6'
+            initial={{opacity:0,y:50}}
+            animate={{opacity:1,y:0}}
+            transition={{duration:1,delay:1.2}}
+            >
+              <a href='#projects' className='px-6 py-3 rounded-full font-medium text-lg text-white bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] shadow-lg hover:scale-105 transition-all'>View My Work</a>
+              <a href='' download className='px-6 py-3 rounded-full font-medium text-lg text-black bg-white shadow-lg hover:bg-gray-300 hover:scale-105 transition-all'>My Resume</a>
+            </motion.div>
+            <motion.div className='mt-10 flex gap-5 text-2xl md:text-3xl justify-center lg:justify-start'>
+              {socials.map(({Icon,label,link})=>(
+                <motion.a href={link} key={label} aria-label={label} target='_blank' rel='noopener noreferrer'
+                className='text-gray-300 hover:text-white transition-colors'
+                whileHover={{scale:1.2}}
+                whileTap={{scale:0.9}}
+                >
+                  {<Icon />}
+                </motion.a>
+              ))}
             </motion.div>
           </div>
         </div>
