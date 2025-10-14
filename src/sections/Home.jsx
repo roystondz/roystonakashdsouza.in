@@ -12,7 +12,7 @@ const Home = () => {
   const [deleting,setDeleting]=useState(false);
   const socials=[
     {Icon:FaXTwitter,label:'X',link:'https://x.com/royston_akash'},
-    {Icon:FaLinkedinIn,label:'LinkedIn',link:'https://www.linkedin.com/in/royston-akash-dsouza-8b4b621b3/'},
+    {Icon:FaLinkedinIn,label:'LinkedIn',link:'https://www.linkedin.com/in/royston-akash-dsouza'},
     {Icon:FaGithub,label:'GitHub',link:''}
   ]
 
