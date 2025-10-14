@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import ParticlesBackground from '../components/ParticlesBackground'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
-
+import avatar from '../assets/avator.png'
 
 const Home = () => {
 
@@ -97,7 +97,26 @@ const Home = () => {
             </motion.div>
           </div>
         </div>
+        <motion.img
+  src={avatar}
+  alt="Avatar"
+  className="
+    hidden lg:block 
+    mx-auto lg:ml-auto my-auto 
+    scale-120
+    
+  "
+  style={{ maxHeight: '80vh', maxWidth: '100%' }}
+  initial={{ opacity: 0, scale: 0.6, y: 50 }}
+  animate={{ opacity: 1, scale: 1, y: 0 }}
+  transition={{ duration: 1, delay: 1.6 }}
+/>
+
+
+
+        
       </div>
+
     </section>
   )
 }
