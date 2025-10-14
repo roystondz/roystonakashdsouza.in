@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import ParticlesBackground from '../components/ParticlesBackground'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
-import avatar from '../assets/avator.png'
+import avatar from '../assets/better_robot.png'
 
 const Home = () => {
 
