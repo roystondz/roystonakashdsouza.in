@@ -63,9 +63,9 @@ const Projects = () => {
                 </h3>
 
                 {/* Card mockup */}
-                <div className="relative overflow-hidden shadow-2xl border border-white/20 hover:scale-105 transition-transform duration-500">
+                <div className="relative overflow-hidden  border  hover:scale-105 transition-transform duration-500 rounded-xl">
                   {/* Mobile / Desktop card size */}
-                  <div className="w-[330px] h-[480px] md:w-[800px] md:h-[430px] rounded-3xl md:rounded-xl overflow-hidden">
+                  <div className="w-[330px] h-[480px] md:w-[800px] md:h-[430px] rounded-xl md:rounded-xl overflow-hidden">
                     <picture>
                       <source media="(min-width:768px)" srcSet={proj.imgDesktop} />
                       <img
