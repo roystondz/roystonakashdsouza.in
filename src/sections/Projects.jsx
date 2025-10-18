@@ -33,6 +33,7 @@ const Projects = () => {
 
   return (
     <section
+    id="projects"
       ref={sectionRef}
       className="relative bg-black text-white py-24 px-6 md:px-12"
     >
