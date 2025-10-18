@@ -43,7 +43,7 @@ const About = () => {
         <h2 className="text-3xl sm:text-4xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1cd8d2] to-[#00bf8f]">Royston Akash Dsouza</span>
         </h2>
-        <motion.p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed text-justify"
+        <motion.p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed px-4 md:px-0"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
