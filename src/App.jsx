@@ -18,9 +18,9 @@ export default function App() {
       <Home/>
       <About/>
       <Skills/>
-      <Projects/>
+      {/* <Projects/> */}
       <Experience/>
-      <Testimonials/>
+      {/* <Testimonials/> */}
       <Contact/>
       <Footer/>
     </div>
