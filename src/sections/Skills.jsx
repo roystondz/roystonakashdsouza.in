@@ -62,7 +62,7 @@ const Skills = () => {
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear",
-            duration: 5,
+            duration: 10,
           }}
         >
           {[...skills, ...skills].map((skill, index) => (
@@ -81,8 +81,11 @@ const Skills = () => {
         </motion.div>
       </div>
 
-      {/* Fading edges */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
+  {/* Fading edges */}
+<div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black/90 to-transparent pointer-events-none z-20" />
+<div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black/90 to-transparent pointer-events-none z-20" />
+
+
     </section>
   );
 };
