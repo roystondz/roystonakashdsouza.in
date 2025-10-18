@@ -13,12 +13,12 @@ import Testimonials from "./sections/Testimonials";
 export default function App() {
   return (
     <div className="relative gradient text-white scroll-smooth scrollbar-hide scroll-behavior-auto">  
-    <CustomCursor/>
+    {/* <CustomCursor/> */}
       <Navbar/>
       <Home/>
       <About/>
       <Skills/>
-      {/* <Projects/> */}
+      <Projects/>
       <Experience/>
       {/* <Testimonials/> */}
       <Contact/>

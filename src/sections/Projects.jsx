@@ -1,111 +1,103 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import p11 from "../assets/p11.png";
+import p from "../assets/p.png";
+import f from "../assets/f.png";
+import f11 from "../assets/f11.png";
+import e from "../assets/e.png";
+import e11 from "../assets/e11.png";
+
+const projects = [
+  {
+    name: "Portfolio Website",
+    imgMobile: p11,
+    imgDesktop: p,
+    link: "#",
+  },
+  {
+    name: "File Organizer CLI Tool",
+    imgMobile: f11,
+    imgDesktop: f,
+    link: "https://file-organizer-cli.vercel.app/",
+  },
+  {
+    name: "EV Charging Station Finder",
+    imgMobile: e11,
+    imgDesktop: e,
+    link: "https://ev-clf-location-finder-royston.vercel.app/",
+  },
+];
 
 const Projects = () => {
-  const projectRefs = [useRef(null), useRef(null), useRef(null)];
-  const buttonRef = useRef(null);
   const sectionRef = useRef(null);
 
-  const projects = [
-    {
-      name: "NK Studio",
-      imgMobile: "/assets/img1-mobile.JPG",
-      imgDesktop: "/assets/img1-desktop.JPG",
-      link: "https://www.nk.studio/"
-    },
-    {
-      name: "Gamily",
-      imgMobile: "/assets/img2-mobile.JPG",
-      imgDesktop: "/assets/img2-desktop.JPG",
-      link: "#"
-    },
-    {
-      name: "Hungry Tiger",
-      imgMobile: "/assets/img3-mobile.JPG",
-      imgDesktop: "/assets/img3-desktop.JPG",
-      link: "https://www.eathungrytiger.com/"
-    }
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const scrollTop = window.scrollY;
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const progress = (scrollTop - sectionTop) / sectionHeight;
-
-      projectRefs.forEach((ref, i) => {
-        if (!ref.current) return;
-        if (progress >= i / projectRefs.length && progress < (i + 1) / projectRefs.length) {
-          ref.current.style.opacity = 1;
-          ref.current.style.transform = "scale(1) translateY(0)";
-        } else {
-          ref.current.style.opacity = 0;
-          ref.current.style.transform = "scale(0.95) translateY(40px)";
-        }
-      });
-
-      if (buttonRef.current) {
-        if (progress > 0.9) {
-          buttonRef.current.style.opacity = 1;
-          buttonRef.current.style.transform = "translateY(0) scale(1.1)";
-        } else {
-          buttonRef.current.style.opacity = 0;
-          buttonRef.current.style.transform = "translateY(40px) scale(1)";
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // initialize animations
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative bg-[#0d4d3d] text-white min-h-[300vh]">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center tracking-wide">My Work</h2>
+    <section
+      ref={sectionRef}
+      className="relative bg-black text-white py-24 px-6 md:px-12"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center tracking-wide">
+        My Work
+      </h2>
 
-        <div className="relative w-full flex-1 flex items-center justify-center h-[70vh]">
-          {projects.map((proj, i) => (
+      <div className="flex flex-col items-center space-y-16">
+        {projects.map((proj, i) => {
+          const ref = useRef(null);
+          const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+          return (
             <div
               key={i}
-              ref={projectRefs[i]}
-              className="absolute w-full max-w-5xl transition-all duration-700 scale-95 opacity-0 transform translate-y-10"
+              ref={ref}
+              className="w-full flex justify-center"
             >
-              <h3 className="text-[clamp(2rem,6vw,5rem)] font-bangers italic mb-6 text-center">
-                {proj.name}
-              </h3>
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl h-full border border-white/10">
-                <picture>
-                  <source media="(min-width: 768px)" srcSet={proj.imgDesktop} />
-                  <img
-                    src={proj.imgMobile}
-                    alt={proj.name}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </picture>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent"></div>
-              </div>
-            </div>
-          ))}
-        </div>
+              <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={isInView ? { y: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col items-center"
+              >
+                <h3 className="text-[clamp(2rem,6vw,4rem)] font-bangers italic mb-6 text-center">
+                  {proj.name}
+                </h3>
 
-        <div
-          ref={buttonRef}
-          className="opacity-0 mt-12 transition-all duration-700 transform translate-y-10"
+                {/* Card mockup */}
+                <div className="relative overflow-hidden shadow-2xl border border-white/20 hover:scale-105 transition-transform duration-500">
+                  {/* Mobile / Desktop card size */}
+                  <div className="w-[330px] h-[480px] md:w-[800px] md:h-[430px] rounded-3xl md:rounded-xl overflow-hidden">
+                    <picture>
+                      <source media="(min-width:768px)" srcSet={proj.imgDesktop} />
+                      <img
+                        src={proj.imgMobile}
+                        alt={proj.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </picture>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent"></div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
+
+        {/* Button */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-12"
         >
           <a
-            href="https://www.nk.studio/"
+            href="https://github.com/roystondz"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 font-bold rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 text-black shadow-lg hover:scale-110 transform transition-transform duration-500"
+            className="inline-block px-8 py-4 font-bold rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 text-black shadow-lg hover:scale-125 transform transition-transform duration-500"
           >
             🚀 View More Projects
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
