@@ -1,4 +1,5 @@
 import CustomCursor from "./components/CustomCursor";
+import KonamiConfetti from "./components/KonamiConfetti";
 import Navbar from "./components/Navbar";
 import ParticlesBackground from "./components/ParticlesBackground";
 import ScrollProgress from "./components/ScrollProgress";
@@ -16,6 +17,7 @@ export default function App() {
     <div className="relative gradient text-white scroll-smooth scrollbar-hide scroll-behavior-auto">  
     {/* <CustomCursor/> */}
     <ScrollProgress/>
+    <KonamiConfetti/>
       <Navbar/>
       <Home/>
       <About/>
