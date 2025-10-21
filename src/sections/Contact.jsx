@@ -18,12 +18,12 @@ const fadeUp = {
 
 const Contact = () => {
   return (
-    
+    <div>
     <section
       id="contact"
       className="relative min-h-screen bg-black text-white py-24 px-6 md:px-20 flex flex-col md:flex-row items-center justify-center overflow-hidden"
     >
-      <ParticlesBackground />
+      {/* <ParticlesBackground /> */}
       {/* Gradient glow background */}
       <div className="absolute inset-0 gradient opacity-30 blur-3xl -z-10" />
 
@@ -144,6 +144,7 @@ const Contact = () => {
         </motion.form>
       </motion.div>
     </section>
+    </div>
   );
 };
 
