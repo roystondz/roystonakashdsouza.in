@@ -40,7 +40,12 @@ const IntroAnimation = ({ onFinish }) => {
           key="intro"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0 } }}
+          exit={{
+            y: "-100%",
+            transition:{duration:1.05,
+            ease: [0.83, 0, 0.17, 1]
+            }
+          }}
           transition={{ duration: 1 }}
           className="fixed z-[9999] inset-0 flex items-center justify-center bg-black text-white overflow-hidden"
         >
