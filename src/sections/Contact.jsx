@@ -81,9 +81,10 @@ const Contact = () => {
             />
             <label
   className="absolute left-3 top-3 text-gray-400 text-sm transition-all duration-300
-  peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base
-  peer-focus:top-[-22px] peer-focus:text-[#1cd8d2] peer-focus:text-sm
-  px-1 pointer-events-none"
+    peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base
+   peer-placeholder-shown:top-[-22px] peer-focus:text-[#1cd8d2] peer-focus:text-sm
+   px-1 pointer-events-none"
+pl
 >
   Your Name
 </label>
@@ -102,8 +103,8 @@ const Contact = () => {
             />
             <label
   className="absolute left-3 top-3 text-gray-400 text-sm transition-all duration-300
-  peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base
-  peer-focus:top-[-22px] peer-focus:text-[#1cd8d2] peer-focus:text-sm
+  peer-placeholder-shown:top-[-22px] peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base
+   peer-focus:text-[#1cd8d2] peer-focus:text-sm
   px-1 pointer-events-none"
 >
   Your Email
