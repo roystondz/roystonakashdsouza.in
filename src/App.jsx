@@ -11,10 +11,22 @@ import Home from "./sections/Home";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import Testimonials from "./sections/Testimonials";
+import React from "react";
+import IntroAnimation from "./components/IntroAnimation";
 
 export default function App() {
+  const [introDone, setIntroDone] = React.useState(false);
+
   return (
-    <div className="relative gradient text-white scroll-smooth scrollbar-hide scroll-behavior-auto">  
+
+    <>
+
+    {!introDone && (
+      <IntroAnimation onComplete={() => setIntroDone(true)} />
+    )}
+    {
+       (
+        <div className="relative gradient text-white scroll-smooth scrollbar-hide scroll-behavior-auto">  
     {/* <CustomCursor/> */}
     <ScrollProgress/>
     <KonamiConfetti/>
@@ -28,5 +40,8 @@ export default function App() {
       <Contact/>
       <Footer/>
     </div>
+      )
+    }
+    </>
   );
 }
