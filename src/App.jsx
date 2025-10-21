@@ -25,7 +25,7 @@ export default function App() {
       <IntroAnimation onComplete={() => setIntroDone(true)} />
     )}
     {
-       (
+       
         <div className="relative gradient text-white scroll-smooth scrollbar-hide scroll-behavior-auto">  
     {/* <CustomCursor/> */}
     <ScrollProgress/>
@@ -40,7 +40,7 @@ export default function App() {
       <Contact/>
       <Footer/>
     </div>
-      )
+      
     }
     </>
   );

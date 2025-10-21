@@ -13,6 +13,7 @@ const IntroAnimation = ({ onFinish }) => {
 
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [showWhite, setShowWhite] = useState(false);
 
   useEffect(() => {
     if (index < greetings.length - 1) {
@@ -21,8 +22,12 @@ const IntroAnimation = ({ onFinish }) => {
       }, 1100);
       return () => clearTimeout(id);
     } else {
+      // show white scroll after last text
       const timeout = setTimeout(() => {
-        setVisible(false);
+        setShowWhite(true);
+        setTimeout(() => {
+          setVisible(false);
+        }, 1800); // duration for scroll + fade
       }, 1300);
       return () => clearTimeout(timeout);
     }
@@ -30,7 +35,7 @@ const IntroAnimation = ({ onFinish }) => {
 
   return (
     <AnimatePresence
-      mode="popLayout"
+      mode="wait"
       onExitComplete={() => {
         if (onFinish) onFinish();
       }}
@@ -41,14 +46,12 @@ const IntroAnimation = ({ onFinish }) => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{
-            y: "-100%",
-            transition:{duration:1.05,
-            ease: [0.83, 0, 0.17, 1]
-            }
+            opacity: 0,
+            transition: { duration: 0.8 },
           }}
-          transition={{ duration: 1 }}
           className="fixed z-[9999] inset-0 flex items-center justify-center bg-black text-white overflow-hidden"
         >
+          {/* Greeting text */}
           <motion.h1
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -59,6 +62,21 @@ const IntroAnimation = ({ onFinish }) => {
           >
             {greetings[index]}
           </motion.h1>
+
+          {/* White scroll transition */}
+          {showWhite && (
+            <motion.div
+              key="white-scroll"
+              className="absolute inset-0 bg-white  z-[10000]"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{
+                duration: 1.8,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+            />
+          )}
         </motion.div>
       )}
     </AnimatePresence>
