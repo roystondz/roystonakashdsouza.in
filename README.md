@@ -1,16 +1,32 @@
-# React + Vite
+# roystonakashdsouza — portfolio v4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site of **Royston Akash Dsouza**, software engineer.
 
-Currently, two official plugins are available:
+**Stack:** Vite 7 · React 19 · TypeScript · Tailwind CSS v4 · Motion · Three.js · EmailJS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Develop
 
-## React Compiler
+```bash
+npm install
+cp .env.example .env   # add EmailJS keys (optional — form falls back to mailto)
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+`npm run build` type-checks and outputs a static site to `dist/` (deploys as-is to Vercel/Netlify).
 
-## Expanding the ESLint configuration
+## Editing content
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Everything — bio, projects, archive, experience, toolkit, socials — lives in
+[`src/data/site.ts`](src/data/site.ts). Put your CV at `public/resume.pdf`.
+
+## Features
+
+- Graphite + acid-lime palette, Geist / Geist Mono with Instrument Serif accents
+- Dark by default with a light theme toggle; no flash on load
+- 3D particle portrait (Three.js) — hover to disturb, click to scatter
+- Split-text reveals, scramble labels, magnetic buttons, spotlight/tilt cards,
+  scroll-velocity marquees, scroll-drawn timeline, count-up stats, cursor ring
+- ⌘K / Ctrl K command menu (navigation, links, copy email, theme) — doubles as the mobile menu
+- Scroll-reveal motion that respects `prefers-reduced-motion`
+- Contact form via EmailJS with a `mailto:` fallback
+- Live local time in the footer
