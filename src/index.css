@@ -1,15 +1,107 @@
 @import "tailwindcss";
 
-body{
-  font-family: "poppins", sans-serif;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-lime: var(--lime);
+  --color-on-lime: var(--on-lime);
 }
 
-h1,h2{
-  font-family: "Roboto", sans-serif;
+/* Graphite + acid lime. `accent` is for text/lines (darkened in light mode for
+   contrast); `lime` is the fill colour, identical in both themes. */
+:root {
+  --paper: #f4f5f7;
+  --card: #e8eaee;
+  --ink: #0a0b0d;
+  --muted: #646a75;
+  --line: #d7dae0;
+  --accent: #4f7a00;
+  --lime: #c6ff3d;
+  --on-lime: #08090b;
+  color-scheme: light;
 }
 
-@layer utilities{
-  .gradient{
-    background: linear-gradient(-45deg,#302b63,#00bf8f,#1cd8d2);
-  }
+[data-theme="dark"] {
+  --paper: #08090b;
+  --card: #111318;
+  --ink: #f2f4f7;
+  --muted: #7d838f;
+  --line: #1e2128;
+  --accent: #c6ff3d;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--on-lime);
+}
+
+/* Fine film grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Cursor-following spotlight for cards (set --x / --y from JS) */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(380px circle at var(--x, 50%) var(--y, 50%), color-mix(in oklab, var(--lime) 13%, transparent), transparent 65%);
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Hero grid that lights up around the cursor */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(520px circle at var(--mx, 70%) var(--my, 30%), #000 0%, transparent 70%);
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
